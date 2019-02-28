@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Javascript Essentials</title>
+
+  <!-- STYLES SECTION ====================== -->
+  <style type="text/css">
+
+    h1 {
+      text-align: center;
+    }
+    .container {
+      display: flex;
+      margin: 2rem auto;
+      max-width: 768px;
+    }
+
+    .group {
+      flex: 1;
+      margin: 0 1rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+
+  </style>
+
+</head>
+<body>
+  
+  <h1>Modify Me</h1>
+  <div class="container">
+    <div class="group">
+      <label>Background Color</label>
+      <select name="cssProperty" id="background">
+        <option value="Green">Green</option>
+        <option value="Yellow">Yellow</option>
+        <option value="Red">Red</option>
+      </select>
+    </div>
+
+    <div class="group">
+      <label>Width</label>
+      <select name="cssProperty" id="width">
+        <option value="100px">100px</option>
+        <option value="200px">200px</option>
+        <option value="300px">300px</option>
+      </select>
+    </div>
+
+    <div class="group">
+      <label>Height</label>
+      <select name="cssProperty" id="height">
+        <option value="100px">100px</option>
+        <option value="200px">200px</option>
+        <option value="300px">300px</option>
+      </select>
+    </div>
+
+    <button id="set">Set Style</button>
+  </div>
+
+  <div id="modify" style="width: 300px; height: 300px; background: blue; margin: 0 auto"></div>
+
+  <footer>
+    <p>Build with love by: <a href="https://athanwebdev.github.io" target="_blank">Jonathan Gaspado</a></p>
+  </footer>
+
+
+  <!-- SCRIPTS SECTION -================ -->
+  <script type="text/javascript">
+
+    // get select elements through its name attribute
+    let elements = document.getElementsByName('cssProperty');
+
+    // get the element with an id of modify
+    let div = document.querySelector('#modify');
+
+
+    // create a function
+    function set() {
+
+      // loop through the nodelist
+      for(let i = 0; i < elements.length; i++) {
+        
+        // get the id attribute
+        let cssProperty = elements[i].getAttribute('id');
+
+        // get the value of input
+        let cssValue = elements[i].value; 
+
+        // override the existing style with the new style based from input
+        div.style[cssProperty] = cssValue;
+      }
+    }
+
+
+    // select button, invoke function set() upon click
+    document.querySelector('#set').addEventListener('click', set);
+    
+
+  </script>
+</body>
+</html>
